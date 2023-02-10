@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+
+form {
+ 
+  width: 200px;
+    margin:20 auto;
+    padding: 15px;
+   / border: 1px solid #ccc;
+  
+}
+
+label {
+  margin-right: 10px;
+  display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+input,textarea{
+    
+     width: 100%;
+    padding: 5px;
+    margin-bottom: -10px;
+    border: px solid #ccc;
+    font-size: 16px;
+    box-sizing: border-box;
+  }
+    
+
+
+   select {
+        width: 200px;
+        padding: 10px;
+        font-size: 14px;
+      }
+
+  /*width: 200px;*/
+  /*height: 20px;*/
+  /*padding: 10px;*/
+  /*margin-bottom: 10px;*/
+
+button[type="submit"] { 
+      /*width: 30%; */
+      /*padding:10px; */
+      /*background-color: #4CAF50; */
+      /*color: white; */
+      /*font-size: 16px; */
+      /*cursor: pointer; */
+       width: 40%;
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    margin-top: -10px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    } 
+
+</style>
+</head>
+<body>
+   
+  <br>
+  <div>
+    <label for="country">Branch:</label>
+    <select id="country" required>
+      <option value="">Pick up any BPI branch</option>
+      <option value="North Luzon">North Luzon</option>
+      <option value="Central Luzon">Central Luzon</option>
+      <option value="South Luzon">South Luzon</option>
+      <option value="Visayas">Visayas</option>
+    </select>
+  </div>
+  <br><br>
+  <button type="submit" onclick="submitForm()">Submit</button>
+</form>
+
+
+    <script>
+     function submitForm() {
+  
+  let branch = document.getElementById("country").value;
+
+console.log(branch)
+  
+       var a =branch;
+
+console.log(a);
+       window.parent.postMessage(
+       JSON.stringify({
+                    event_code: "ym-client-event",
+                    data: a
+               }),
+                "*"
+           );  
+     }
+
+    </script>
+    
+</body>
+
+</html>
